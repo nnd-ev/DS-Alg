@@ -7,67 +7,40 @@ using System.Threading.Tasks;
 namespace Algorithms {
     class Program {
 
-        private static void Quick_Sort(int[] arr, int left, int right) {
-            if (left < right) {
-                int pivot = Partition(arr, left, right);
-
-                if (pivot > 1) {
-                    Quick_Sort(arr, left, pivot - 1);
-                }
-                if (pivot + 1 < right) {
-                    Quick_Sort(arr, pivot + 1, right);
-                }
-            }
-
-        }
-
-        private static int Partition(int[] arr, int left, int right) {
-            int pivot = arr[left];
-            while (true) {
-
-                while (arr[left] < pivot) {
-                    left++;
-                }
-
-                while (arr[right] > pivot) {
-                    right--;
-                }
-
-                if (left < right) {
-                    if (arr[left] == arr[right]) return right;
-
-                    int temp = arr[left];
-                    arr[left] = arr[right];
-                    arr[right] = temp;
-
-
+        private static int binarySearch(int[] niz, int beg, int end, int numb) {
+            int mid;
+            if(end >= beg) {
+                mid = (beg + end) / 2;
+                if(niz[mid] == numb) {
+                    return mid + 1;
+                }else if(niz[mid] < numb) {
+                    return binarySearch(niz, mid + 1, end, numb);
                 } else {
-                    return right;
+                    return binarySearch(niz, beg, mid - 1, numb);
                 }
-            }
+            } 
+            return -1;
         }
+        
+    
         static void Main(string[] args) {
-            //quick sort
+            //binary search
 
-            int[] niz = { 2, 5, -4, 11, 0, 18, 22, 67, 51, 6 };
+            int[] niz = { 1,2,3,8,10,14,18};
+            Console.WriteLine("Enter the number which you want to be searched");
+            int number = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Original array : ");
-            foreach (var item in niz) {
-                Console.Write(" " + item);
+            int location = -1;
+            location = binarySearch(niz, 0, niz.Length, number);
+
+            if(location != -1) {
+                Console.WriteLine("Item found at location: " + location);
+            } else {
+                Console.WriteLine("Item not found");
             }
-            Console.WriteLine();
 
-            Quick_Sort(niz, 0, niz.Length - 1);
 
-            Console.WriteLine();
-            Console.WriteLine("Sorted array : ");
 
-            foreach (var item in niz) {
-                Console.Write(" " + item);
-            }
-            Console.WriteLine();
         }
     }
-
-
 }
