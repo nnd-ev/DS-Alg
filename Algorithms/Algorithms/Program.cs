@@ -7,37 +7,38 @@ using System.Threading.Tasks;
 namespace Algorithms {
     class Program {
 
-        private static int binarySearch(int[] niz, int beg, int end, int numb) {
-            int mid;
-            if(end >= beg) {
-                mid = (beg + end) / 2;
-                if(niz[mid] == numb) {
-                    return mid + 1;
-                }else if(niz[mid] < numb) {
-                    return binarySearch(niz, mid + 1, end, numb);
-                } else {
-                    return binarySearch(niz, beg, mid - 1, numb);
-                }
-            } 
-            return -1;
-        }
+       
         
     
         static void Main(string[] args) {
-            //binary search
+            //Insertion sort
 
-            int[] niz = { 1,2,3,8,10,14,18};
-            Console.WriteLine("Enter the number which you want to be searched");
-            int number = int.Parse(Console.ReadLine());
-
-            int location = -1;
-            location = binarySearch(niz, 0, niz.Length, number);
-
-            if(location != -1) {
-                Console.WriteLine("Item found at location: " + location);
-            } else {
-                Console.WriteLine("Item not found");
+            int[] niz = { 2, 5, -4, 11, 0, 18, 22, 67, 51, 6 };
+            //Console.WriteLine("Enter the number which you want to be searched");
+            //int number = int.Parse(Console.ReadLine());
+            Console.WriteLine("Original array: ");
+            foreach (int item in niz) {
+                Console.Write(item + " ");
             }
+
+
+            for (int i=1; i<niz.Length; i++) {
+                int temp = niz[i]; //tem=1
+                int j= i - 1; //j=0
+
+                while(j>=0 && temp <= niz[j]) {
+                    niz[j + 1] = niz[j];
+                    j = j - 1;
+                }
+
+                niz[j + 1] = temp;
+            }
+
+            Console.WriteLine("Soreted array: ");
+            foreach(int item in niz) {
+                Console.Write(item + " ");
+            }
+ 
 
 
 
