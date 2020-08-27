@@ -6,30 +6,27 @@ using System.Threading.Tasks;
 
 namespace Algorithms {
     class Program {
+
+        
+    
         static void Main(string[] args) {
-            //bubble sort
+            //sequental search
 
-            int[] niz = { 3, 9, 1, 12, 99, 3, 28, 44, 1 };
+            int[] niz = { 2, 5, -4, 11, 0, 18, 22, 67, 51, 6 };
 
-            Console.WriteLine("Original array: ");
-            for(int i=0;i<niz.Length; i++) {
-                Console.Write(niz[i] + ", ");
-            }
+            Console.WriteLine("Enter desired value: ");
+            int n = int.Parse(Console.ReadLine());
 
-            for(int i=0; i<niz.Length-1; i++) {
-                for(int j=i+1; j<niz.Length; j++) {
-                    if(niz[i] > niz[j]) { 
-                    int temp = niz[i];
-                    niz[i] = niz[j];
-                    niz[j] = temp;
+            for(int i=0; i<niz.Length; i++) {
+                 
+                     if(niz[i] == n){
+                    Console.WriteLine("it's location is on {0}", i+1);
+                    return;
                 }
-                }
-            }
-
-            Console.WriteLine("\nSorted array: ");
-
-            foreach (int item in niz) {
-                Console.Write(item + ", ");
+               else if(i == niz.Length - 1) {
+                    Console.WriteLine("There is not such element in array.");
+                } 
+                   
             }
 
         }
