@@ -6,41 +6,46 @@ using System.Threading.Tasks;
 
 namespace Algorithms {
     class Program {
-
-       
-        
-        
-
+ 
         static void Main(string[] args) {
-            //Binary search-while way
 
-            int[] niz = { 2, 5, -4, 11, 0, 18, 22, 67, 51, 6 };
-            //int[] niz = {1,2,3,4,5,6,7,8};
+            
+            int[] niz = { 1,5, 3, 2, 1 };
 
-            Console.WriteLine("Original array: ");
-            foreach (int item in niz) {
-                Console.Write(item + " ");
-            }
+            int[] novi_niz = new int[2];
+            List<int> lista = new List<int>();
 
-            int i, max, min;
-            max = niz[0];
-            min = niz[0];
+            int target = 8;
+            for(int i=0; i<niz.Length; i++) {
+                for(int j=i+1; i<niz.Length; i++) {
+                    if(niz[j] == target - niz[i]) {
+                        novi_niz[0] = j;
+                        novi_niz[1] = i;
 
-            for(i=0; i<niz.Length; i++) {
-                if(niz[i] > max) {
-                    max = niz[i];
-                }
-                if(niz[i]< min) { 
-                    min = niz[i];
+                        //lista.Add(i);
+                        //lista.Add(j);
+                    }
                 }
             }
-            Console.WriteLine("Max elemente in array is -> "+ max);
-            Console.WriteLine("Min elemente in array is -> "+ min);
 
-            //    Console.WriteLine("Soreted array: ");
-            //foreach (int item in niz) {
-            //    Console.Write(item + " ");
-            //} 
+            foreach(int item in niz) {
+                Console.WriteLine(item);
+            }
+            //Console.WriteLine("Vrati indexe: ");
+            //foreach (var item in lista) {
+            //    Console.WriteLine(item);
+            //}
+
+            Console.WriteLine("Vrati indexe: ");
+            foreach (int item in novi_niz) {
+                Console.WriteLine(item);
+            }
+
+
+
+             
+
+            Console.ReadKey();
         }
     }
 }
